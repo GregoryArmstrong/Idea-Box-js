@@ -1,13 +1,13 @@
 function deleteIdea(){
   $('#idea-index').delegate('.delete-button', 'click', function() {
-    var ideaId = $(this).closest('.idea').attr('data-id')
-    var ideaElement = $(this).closest('.idea')
+    var $ideaId = $(this).closest('.idea').attr('data-id')
+    var $ideaElement = $(this).closest('.idea')
     $.ajax({
-      url: '/api/v1/ideas/' + ideaId,
+      url: '/api/v1/ideas/' + $ideaId,
       type: 'DELETE',
-      data: { 'id': ideaId },
+      data: { 'id': $ideaId },
       success: function(response){
-        removeIdea(ideaElement)
+        removeIdea($ideaElement)
       }, error: function(xhr) {
         console.log(xhr.responseText)
       }
