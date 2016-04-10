@@ -5,11 +5,7 @@ function editIdeas(){
     var $ideaId = $(this).closest('.idea').attr('data-id')
     var $ideaNewData = $ideaObject.text() || " "
 
-    if($ideaDataId == "title"){
-      ideaParams = { 'title': $ideaNewData }
-    } else if($ideaDataId == "body"){
-      ideaParams = { 'body': $ideaNewData }
-    }
+    ideaParams = setIdeaParams($ideaDataId, $ideaNewData);
 
     $.ajax({
       url: 'api/v1/ideas/' + $ideaId,
@@ -21,4 +17,8 @@ function editIdeas(){
       }
     });
   })
+}
+
+function setIdeaParams(ideaDataId, ideaNewData) {
+  return { ideaDataId: ideaNewData };
 }
